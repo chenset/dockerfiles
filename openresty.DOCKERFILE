@@ -13,6 +13,7 @@ RUN  sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && echo "imap jk <ESC>" >> ~/.vimrc \
     && echo "noremap H ^" >> ~/.vimrc \
     && echo "noremap L $" >> ~/.vimrc \
+    && echo "map <f2> :w\|!nginx -s reload" >> ~/.vimrc \
     && echo "set ignorecase smartcase" >> ~/.vimrc \
     && echo "set nu" >> ~/.vimrc \
     && apt-get update -y \
