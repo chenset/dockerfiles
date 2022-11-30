@@ -17,7 +17,7 @@ RUN  sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && echo "set nu" >> ~/.vimrc \
     && apt-get update -y \
     # 可执行选择安装程序和依赖
-    && apt-get install -y vim iputils-ping net-tools telnet lsof htop less unzip \
+    && apt-get install -y vim iputils-ping net-tools telnet lsof htop less unzip curl wget \
     # 安装后的清理现场, 瘦身镜像
     && apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
