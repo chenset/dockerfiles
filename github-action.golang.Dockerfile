@@ -7,6 +7,7 @@ ENV TZ='<UTC>-8'
 
 # 拆成多段RUN, builder不需要合并RUN指令
 RUN cd /tmp/ctx/
+RUN ls -al
 RUN go mod download
 RUN go build -v -ldflags="-s -w -X 'main.Version=`date +'%Y-%m-%d %H:%M:%S'`'" -o app
 RUN ls -al
