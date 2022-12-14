@@ -5,16 +5,14 @@ ADD . /tmp/ctx/
 # ENV GO111MODULE=on
 ENV TZ='<UTC>-8' 
 
-RUN cd /tmp/ctx/ \
-# ubuntu:latest has no curl/wget
-# && arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) \
-# && wget https://github.com/chenset/mirror/releases/download/mirror/upx-3.96-${arch}_linux.tar.gz -O u.tar.gz \
-&& go mod download && go build -v -ldflags="-s -w -X 'main.Version=`date +'%Y-%m-%d %H:%M:%S'`'" -o app  \
-&& ls -al \
-#&& arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && if [ "${arch}" = "arm64" ]; then echo 'skip compression'; else apt-get update && apt-get install -y upx && upx -6 app ; fi
-&& arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) \
-&& wget https://github.com/chenset/mirror/releases/download/mirror/upx-3.96-${arch}_linux.tar -O /tmp/ctx/upx.tar \
-&& tar --overwrite -xvf /tmp/ctx/upx.tar && ls -al && chmod +x /tmp/ctx/upx && /tmp/ctx/upx -5 app
+# 拆成多段RUN, builder不需要合并RUN指令
+RUN cd /tmp/ctx/
+RUN go mod download
+RUN go build -v -ldflags="-s -w -X 'main.Version=`date +'%Y-%m-%d %H:%M:%S'`'" -o app
+RUN ls -al
+RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/)
+RUN wget https://github.com/chenset/mirror/releases/download/mirror/upx-3.96-${arch}_linux.tar -O /tmp/ctx/upx.tar
+RUN tar --overwrite -xvf /tmp/ctx/upx.tar && ls -al && chmod +x /tmp/ctx/upx && /tmp/ctx/upx -5 app
 
 ## ---------------------------------------------------------------
 ## ---------------------------------------------------------------
