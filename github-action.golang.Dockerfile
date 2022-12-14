@@ -2,6 +2,8 @@ FROM golang:bullseye as builder
 
 ADD . /tmp/ctx/
 
+WORKDIR /tmp/ctx/
+
 # ENV GO111MODULE=on
 ENV TZ='<UTC>-8' 
 
