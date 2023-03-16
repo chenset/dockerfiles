@@ -27,7 +27,7 @@ RUN tar --overwrite -xvf /tmp/ctx/upx.tar && ls -al && chmod +x /tmp/ctx/upx && 
 ## ---------------------------------------------------------------
 ## ---------------------------------------------------------------
 
-FROM ubuntu:22.04
+FROM debian:stable
 
 WORKDIR /root/
 
