@@ -41,4 +41,4 @@ RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) \
 
 WORKDIR ${WORK_DIR}
 
-CMD ["${EXEABLE_FILE_PATH}"]
+CMD ["/root/app"]
