@@ -1,5 +1,5 @@
 # 修改默认时区必须使用 debian 系列的镜像底包
-FROM openresty/openresty:1.21.4.1-4-bullseye-amd64
+FROM openresty/openresty:1.21.4.1-6-bullseye-amd64
 
 # 替换系统 APT 源为阿里云
 RUN  sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
