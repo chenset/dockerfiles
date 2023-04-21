@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM openresty/openresty:1.21.4.1-6-bullseye-amd64
 
 ENV TZ='<UTC>-8' 
 
@@ -38,4 +38,4 @@ WORKDIR /root/
 # docker build . -f crontab.Dockerfile -t registry.cn-shenzhen.aliyuncs.com/llll/crontab:latest
 # docker push registry.cn-shenzhen.aliyuncs.com/llll/crontab:latest
 
-CMD ["cron", "-f"]
+CMD ["sh", "-c", "'cron -f & ; /usr/bin/openresty -g daemon off'"]
