@@ -38,4 +38,4 @@ WORKDIR /root/
 # docker build . -f crontab.Dockerfile -t registry.cn-shenzhen.aliyuncs.com/llll/crontab:latest
 # docker push registry.cn-shenzhen.aliyuncs.com/llll/crontab:latest
 
-CMD ["sh", "-c", "crontab /etc/cron.d/curl.cron && cron -f && /usr/bin/openresty -g 'daemon off;'"]
+CMD ["sh", "-c", "crontab /etc/cron.d/curl.cron && cron && /usr/bin/openresty -g 'daemon off;'"]
