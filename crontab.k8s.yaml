@@ -43,6 +43,7 @@ spec:
               readOnly: true
               mountPath: /etc/localtime
       restartPolicy: Always
+      terminationGracePeriodSeconds: 3
       imagePullSecrets:
         - name: registry.cn-shenzhen.aliyuncs.com
 
