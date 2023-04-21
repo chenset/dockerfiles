@@ -25,8 +25,9 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
    && echo "noremap L $" >> ~/.vimrc \
    && echo "set ignorecase smartcase" >> ~/.vimrc \
    # vim 启用行号
-   && echo "set nu" >> ~/.vimrc 
-
+   && echo "set nu" >> ~/.vimrc \
+   # 覆盖默认的 nginx 配置文件
+   && echo "server { listen 80; server_name localhost; location / { root /dev/shm; } }" > /etc/nginx/conf.d/default.conf
 
 WORKDIR /root/
 
