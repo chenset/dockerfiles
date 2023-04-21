@@ -1,0 +1,57 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: crontab
+  namespace: default
+  labels:
+    k8s-app: crontab
+spec:
+  selector:
+    matchLabels:
+      k8s-app: crontab
+  template:
+    metadata:
+      name: crontab
+      labels:
+        k8s-app: crontab
+    spec:
+      volumes:
+        - name: crontab-conf
+          configMap:
+            name: crontab-conf
+            items:
+              - key: curl.cron 
+                path: curl.cron
+            defaultMode: 420
+        - name: host-time
+          hostPath:
+            path: /etc/localtime
+            type: ''
+      containers:
+        - name: crontab
+          image: registry.cn-shenzhen.aliyuncs.com/llll/crontab:latest
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: <UTC>-8
+          volumeMounts:
+            - name: crontab-conf
+              mountPath: /etc/cron.d/
+            - name: host-time
+              readOnly: true
+              mountPath: /etc/localtime
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: registry.cn-shenzhen.aliyuncs.com
+
+---
+
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: crontab-conf
+  namespace: default
+data:
+  curl.cron: |
+    * 1 1 * * echo 1 >> /dev/shm/curl.log
+    * 1 1 * * echo 2 >> /dev/shm/curl.log

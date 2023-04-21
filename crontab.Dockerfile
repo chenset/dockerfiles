@@ -15,7 +15,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
    && export IMAGE_BUILD_TIME=`date +"%Y-%m-%d %H:%M:%S"` \
    && apt-get update -y \
    # 可执行选择安装程序和依赖
-   && apt-get install -y vim iputils-ping net-tools telnet lsof htop less unzip curl wget cron \
+   && apt-get install -y vim iputils-ping net-tools telnet lsof htop less unzip curl wget cron procps psmisc dnsutils \
    # 安装后的清理现场, 瘦身镜像
    && apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/* \
    # vim 禁用 .swp
