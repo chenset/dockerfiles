@@ -49,6 +49,22 @@ spec:
 
 ---
 
+kind: Service
+apiVersion: v1
+metadata:
+  name: crontab
+  namespace: default
+spec:
+  ports:
+    - name: crontab
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    k8s-app: crontab
+
+---
+
 kind: ConfigMap
 apiVersion: v1
 metadata:
