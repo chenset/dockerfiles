@@ -1,0 +1,12 @@
+#project
+.idea
+pkg
+bin
+temp
+*.db
+*.db-shm
+*.db-wal
+*.gob
+*.json
+nohup.out
+/node_modules
