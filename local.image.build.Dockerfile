@@ -18,20 +18,7 @@ ENV TZ='<UTC>-8'
 # 根据 architecture 复制指定可执行文件到 workdir
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) \
    && mv -f ${TEMP_EXEABLE_DIR}${EXEABLE_FILE}.$arch ${EXEABLE_FILE_PATH} \
-   && rm -rf ${TEMP_EXEABLE_DIR} \
-   && echo "alias ll='ls -Alh --color=auto'" >> ~/.bashrc \
-   && echo "alias l='ls -Alh --color=auto'" >> ~/.bashrc \
-   && echo "alias ls='ls --color=auto'" >> ~/.bashrc \
-   && touch ~/image.time.$(date +"%Y-%m-%d_%H.%M.%S").build \
-   && export IMAGE_BUILD_TIME=`date +"%Y-%m-%d %H:%M:%S"` \
-   # vim 禁用 .swp
-   && echo "set noswapfile" >> ~/.vimrc \
-   && echo "imap jk <ESC>" >> ~/.vimrc \
-   && echo "noremap H ^" >> ~/.vimrc \
-   && echo "noremap L $" >> ~/.vimrc \
-   && echo "set ignorecase smartcase" >> ~/.vimrc \
-   # vim 启用行号
-   && echo "set nu" >> ~/.vimrc
+   && rm -rf ${TEMP_EXEABLE_DIR}
 
 WORKDIR ${WORK_DIR}
 
