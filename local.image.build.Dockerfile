@@ -1,4 +1,4 @@
-FROM debian:11.7
+FROM debian:oldstable
 
 ARG EXEABLE_FILE='docker-build-会传参进来覆盖'
 ENV EXEABLE_FILE ${EXEABLE_FILE}
