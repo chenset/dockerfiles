@@ -16,7 +16,7 @@ COPY ./${EXEABLE_FILE}.* ${TEMP_EXEABLE_DIR}
 ENV TZ='<UTC>-8' 
 
 # 根据 architecture 复制指定可执行文件到 workdir
-RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) \
+RUN arch='amd64' \
    && mv -f ${TEMP_EXEABLE_DIR}${EXEABLE_FILE}.$arch ${EXEABLE_FILE_PATH} \
    && rm -rf ${TEMP_EXEABLE_DIR}
 
