@@ -19,12 +19,6 @@ ENV TZ='<UTC>-8'
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) \
    && mv -f ${TEMP_EXEABLE_DIR}${EXEABLE_FILE}.$arch ${EXEABLE_FILE_PATH} \
    && rm -rf ${TEMP_EXEABLE_DIR} \
-   # 替换系统 APT 源为阿里云
-   && sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-   && sed -i 's/security.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-   && sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-   && sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-   # 增加一些命令的别名
    && echo "alias ll='ls -Alh --color=auto'" >> ~/.bashrc \
    && echo "alias l='ls -Alh --color=auto'" >> ~/.bashrc \
    && echo "alias ls='ls --color=auto'" >> ~/.bashrc \
