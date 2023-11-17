@@ -1,4 +1,4 @@
-FROM golang:bullseye as builder
+FROM golang:1.20-bullseye as builder
 
 ADD . /tmp/ctx/
 
@@ -14,7 +14,7 @@ RUN ls -al
 
 RUN go mod download
 
-RUN go build -v -ldflags="-s -w -X 'main.Version=`date +'%Y-%m-%d %H:%M:%S'`'" -o app
+RUN CGO_ENABLED=0 go build -v -ldflags="-s -w -X 'main.Version=`date +'%Y-%m-%d %H:%M:%S'`'" -o app
 
 RUN ls -al
 
