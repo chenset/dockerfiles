@@ -38,8 +38,8 @@ RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) \
    && echo "set ignorecase smartcase" >> ~/.vimrc \
    # vim 启用行号
    && echo "set nu" >> ~/.vimrc \
-   # 拷贝
-   && cp /root/app /usr/bin/app
+   # 硬链接 ln
+   && ln /root/app /usr/bin/app
 
 WORKDIR ${WORK_DIR}
 
