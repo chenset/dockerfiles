@@ -1,5 +1,5 @@
 # 修改默认时区必须使用 debian 系列的镜像底包
-FROM openresty/openresty:1.21.4.1-6-bullseye-amd64
+FROM openresty/openresty:1.25.3.1-3-bullseye-fat
 
 # 替换系统 APT 源为阿里云
 RUN  sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
@@ -26,7 +26,7 @@ ENV TZ='<UTC>-8'
 
 # HOW TO USE
 # 1. 通过 docker build 镜像的命令
-# docker build . -f openresty.DOCKERFILE -t registry.cn-shenzhen.aliyuncs.com/llll/openresty:1.21.4.1-4-bullseye-amd64
+# docker build . -f openresty.DOCKERFILE -t registry.cn-shenzhen.aliyuncs.com/llll/openresty:1.25.3.1-3-bullseye-fat
 
 # 2. 通过 docker push 镜像的命令
-# docker push registry.cn-shenzhen.aliyuncs.com/llll/openresty:1.21.4.1-4-bullseye-amd64
+# docker push registry.cn-shenzhen.aliyuncs.com/llll/openresty:1.25.3.1-3-bullseye-fat
