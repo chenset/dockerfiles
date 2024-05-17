@@ -26,9 +26,12 @@ ENV TZ='<UTC>-8'
 
 # HOW TO USE
 
-# 0. mkdir openresty && cd openresty
-# 1. 通过 docker build 镜像的命令
+# 1. mkdir openresty && cd openresty
+
+# 2. vi openresty.DOCKERFILE
+
+# 3. 通过 docker build 镜像的命令
 # docker build . -f openresty.DOCKERFILE -t registry.cn-shenzhen.aliyuncs.com/llll/openresty:1.25.3.1-3-bullseye-fat
 
-# 2. 通过 docker push 镜像的命令
+# 4. 通过 docker push 镜像的命令
 # docker push registry.cn-shenzhen.aliyuncs.com/llll/openresty:1.25.3.1-3-bullseye-fat
