@@ -1,4 +1,5 @@
-FROM golang:1.22-bullseye as builder
+FROM golang:1-trixie as builder
+# golang:1-trixie 为 golang 1.xx.xx 的最新版本
 
 ADD . /tmp/ctx/
 
